@@ -1,0 +1,12 @@
+django
+boto3
+pycryptodome
+feedparser
+beautifulsoup4 
+requests 
+social-auth-app-django
+Pillow
+django-storages
+gunicorn
+Pymysql
+cryptography

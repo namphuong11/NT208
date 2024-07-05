@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+</style>
+<body>
+
+<p><button onclick="myMove()">Click Me</button></p> 
+
+<div id ="container">
+  <div id ="animate"></div>
+</div>
+
+<script>
+function myMove() {
+  let id = null;
+  const elem = document.getElementById("animate");   
+  let angle = 0;
+  let radius = 200; // Bán kính của xoắn ốc
+  clearInterval(id);
+  id = setInterval(frame, 20);
+  function frame() {
+    if (radius <= 0) {
+      clearInterval(id);
+    } else {
+      let x = radius * Math.cos(angle * Math.PI / 180); // Tính toán vị trí X dựa trên góc
+      let y = radius * Math.sin(angle * Math.PI / 180); // Tính toán vị trí Y dựa trên góc
+      elem.style.left = (170 + x) + "px"; // Trung tâm của trang là (200, 200)
+      elem.style.top = (170 + y) + "px"; // Trung tâm của trang là (200, 200)
+      radius -= 1; // Giảm bán kính để di chuyển vào trong
+      let asciiChar = String.fromCharCode(Math.floor(Math.random() * 128));
+      elem.textContent = asciiChar;
+      angle += 5; // Tăng góc xoay để xoắn ốc
+    }
+  }
+}
+</script>
+
+</body>
+</html>
